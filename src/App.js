@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import Header from './components/Header'
+import Vehicles from './components/Vehicles';
 
 function App() {
+
+  const [vehicles, setVehicles] = useState ([
+    {
+    id: 1,
+    model: "Tesla Model S",
+    range: '300 km',
+    yearPurchased: 2020,
+    available: true,
+  },
+  {
+    id: 2,
+    model: "Polestar 2",
+    range: '200 km',
+    yearPurchased: 2021,
+    available: true,
+  },
+  {
+    id: 3,
+    model: "Mercedes-Benz EQS",
+    range: '230 km',
+    yearPurchased: 2022,
+    available: false,
+  },])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Header title={"FleetView"} />
+      <Vehicles vehicles = {vehicles} />
     </div>
   );
 }
