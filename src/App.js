@@ -27,10 +27,22 @@ function App() {
     available: false,
   },])
 
+  // Delete Vehicle
+  const deleteVehicle = (id) => {
+    setVehicles(vehicles.filter((vehicle) => vehicle.id !== id))
+  }
+
+  // Toggle Availability
+  const toggleAvailability = (id) => {
+    console.log (id);
+  }
+
   return (
     <div className="container">
       <Header title={"FleetView"} />
-      <Vehicles vehicles = {vehicles} />
+      {vehicles.length > 0 ? <Vehicles vehicles = {vehicles} 
+      onDelete = {deleteVehicle} onToggle = {toggleAvailability} /> : 
+      "There are no vehicles in your fleet."}
     </div>
   );
 }
