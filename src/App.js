@@ -40,8 +40,7 @@ function App() {
   return (
     <div className="container">
       <Header title={"FleetView"} />
-      {vehicles.length > 0 ? <Vehicles vehicles = {vehicles} 
-      onDelete = {deleteVehicle} onToggle = {toggleAvailability} /> : 
+      {vehicles.length > 0 ? <Vehicles vehicles = {vehicles} onDelete = {deleteVehicle} onToggle = {toggleAvailability} /> : 
       "There are no vehicles in your fleet."}
     </div>
   );
