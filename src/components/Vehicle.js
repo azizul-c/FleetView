@@ -11,3 +11,5 @@ const Vehicle = ({ vehicle, onDelete, onToggle, }) => {
 }
 
 export default Vehicle
+
+// this vehicle is nice
