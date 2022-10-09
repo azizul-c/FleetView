@@ -5,6 +5,7 @@ import AddVehicle from './components/AddVehicle';
 
 function App() {
 
+  const [showAddVehicle, setShowAddVehicle] = useState(false)
   const [vehicles, setVehicles] = useState ([
     {
     id: 1,
@@ -28,6 +29,15 @@ function App() {
     available: false,
   },])
 
+  // Add Vehicle
+  const addVehicle = (vehicle) => {
+    
+    // Create random ID -- Note, these are not unique, need to fix that
+    const id = Math.floor(Math.random() * 10000) + 1
+    const newVehicle = { id, ...vehicle }
+    setVehicles([...vehicles, newVehicle])
+  }
+
   // Delete Vehicle
   const deleteVehicle = (id) => {
     setVehicles(vehicles.filter((vehicle) => vehicle.id !== id))
@@ -43,8 +53,9 @@ function App() {
 
   return (
     <div className="container">
-      <Header title={"FleetView"} />
-      <AddVehicle />
+      <Header title={"FleetView"} onAdd = {() => setShowAddVehicle(!showAddVehicle)} showAdd={showAddVehicle} />
+      {/* shorter way of doing a ternary without an else */}
+      {showAddVehicle && <AddVehicle onAdd = {addVehicle} />} 
       {vehicles.length > 0 ? <Vehicles vehicles = {vehicles} onDelete = {deleteVehicle} onToggle = {toggleAvailability} /> : 
       "There are no vehicles in your fleet."}
     </div>
