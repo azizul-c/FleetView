@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Header from './components/Header'
 import Vehicles from './components/Vehicles';
+import AddVehicle from './components/AddVehicle';
 
 function App() {
 
@@ -34,12 +35,16 @@ function App() {
 
   // Toggle Availability
   const toggleAvailability = (id) => {
-    console.log (id);
+    setVehicles(
+      vehicles.map((vehicle) =>
+        vehicle.id === id ? { ...vehicle, available: !vehicle.available } : vehicle)
+    )
   }
 
   return (
     <div className="container">
       <Header title={"FleetView"} />
+      <AddVehicle />
       {vehicles.length > 0 ? <Vehicles vehicles = {vehicles} onDelete = {deleteVehicle} onToggle = {toggleAvailability} /> : 
       "There are no vehicles in your fleet."}
     </div>
