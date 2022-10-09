@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Header from './components/Header'
 import Vehicles from './components/Vehicles';
+import AddVehicle from './components/AddVehicle';
 
 function App() {
 
@@ -27,10 +28,25 @@ function App() {
     available: false,
   },])
 
+  // Delete Vehicle
+  const deleteVehicle = (id) => {
+    setVehicles(vehicles.filter((vehicle) => vehicle.id !== id))
+  }
+
+  // Toggle Availability
+  const toggleAvailability = (id) => {
+    setVehicles(
+      vehicles.map((vehicle) =>
+        vehicle.id === id ? { ...vehicle, available: !vehicle.available } : vehicle)
+    )
+  }
+
   return (
     <div className="container">
       <Header title={"FleetView"} />
-      <Vehicles vehicles = {vehicles} />
+      <AddVehicle />
+      {vehicles.length > 0 ? <Vehicles vehicles = {vehicles} onDelete = {deleteVehicle} onToggle = {toggleAvailability} /> : 
+      "There are no vehicles in your fleet."}
     </div>
   );
 }
