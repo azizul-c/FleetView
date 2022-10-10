@@ -1,0 +1,25 @@
+{
+  "vehicles": [
+    {
+      "model": "Tesla Model S",
+      "range": "200km",
+      "yearPurchased": "2021",
+      "available": false,
+      "id": 1
+    },
+    {
+      "model": "Polestar 2",
+      "range": "300km",
+      "yearPurchased": "2022",
+      "available": false,
+      "id": 2
+    },
+    {
+      "model": "Mercedes-Benz EQS",
+      "range": "200km",
+      "yearPurchased": "2021",
+      "available": true,
+      "id": 3
+    }
+  ]
+}

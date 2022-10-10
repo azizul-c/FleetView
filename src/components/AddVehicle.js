@@ -10,7 +10,17 @@ const AddVehicle = ({ onAdd }) => {
     e.preventDefault()
 
     if (!model) {
-      alert ('Please add a model.')
+      alert ('Please enter the make and model of the vehicle.')
+      return
+    }
+
+    if (!range) {
+      alert ('Please enter the vehicle\'s range.')
+      return
+    }
+
+    if (!yearPurchased) {
+      alert ('Please enter the year the vehicle was purchased.')
       return
     }
 
@@ -39,7 +49,7 @@ const AddVehicle = ({ onAdd }) => {
             onChange={(e) => setYearPurchased(e.target.value)} />
         </div>
 
-        <input type='submit' value='Save Vehicle' className="btn btn-block"/>
+        <input type='submit' value='Add Vehicle' className="btn btn-block"/>
     </form>
   )
 }
