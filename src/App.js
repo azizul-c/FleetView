@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Vehicles from "./components/Vehicles";
 import AddVehicle from "./components/AddVehicle";
+import About from "./components/About";
 
 function App() {
   const [showAddVehicle, setShowAddVehicle] = useState(false);
@@ -89,24 +92,37 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <Header
-        title={"FleetView"}
-        onAdd={() => setShowAddVehicle(!showAddVehicle)}
-        showAdd={showAddVehicle}
-      />
-      {/* shorter way of doing a ternary without an else */}
-      {showAddVehicle && <AddVehicle onAdd={addVehicle} />}
-      {vehicles.length > 0 ? (
-        <Vehicles
-          vehicles={vehicles}
-          onDelete={deleteVehicle}
-          onToggle={toggleAvailability}
+    <Router>
+      <div className="container">
+        <Header
+          title={"FleetView"}
+          onAdd={() => setShowAddVehicle(!showAddVehicle)}
+          showAdd={showAddVehicle}
         />
-      ) : (
-        "There are no vehicles in your fleet."
-      )}
-    </div>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                {/* shorter way of doing a ternary without an else */}
+                {showAddVehicle && <AddVehicle onAdd={addVehicle} />}
+                {vehicles.length > 0 ? (
+                  <Vehicles
+                    vehicles={vehicles}
+                    onDelete={deleteVehicle}
+                    onToggle={toggleAvailability}
+                  />
+                ) : (
+                  "There are no vehicles in your fleet."
+                )}
+              </>
+            }
+          />
+          <Route path="/about" element={<About />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
