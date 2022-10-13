@@ -3,8 +3,9 @@ import { Link } from "react-router-dom"
 const About = () => {
   return (
     <div>
-        <h4>Version 1.0.0</h4>
-        <Link to="/">Go Back</Link>
+      <h4>Version 1.0.0</h4>
+      <h5>Created by Azizul Chowdhury</h5>
+      <Link to="/">Go Back</Link>
     </div>
   )
 }
