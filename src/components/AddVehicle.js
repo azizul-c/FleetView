@@ -1,55 +1,72 @@
 import { useState } from 'react'
 
 const AddVehicle = ({ onAdd }) => {
+  const [make, setMake] = useState('')
   const [model, setModel] = useState('')
-  const [range, setRange] = useState('')
-  const [yearPurchased, setYearPurchased] = useState('')
+  const [distanceDriven, setDistanceDriven] = useState('')
+  const [yearManufactured, setYearManufactured] = useState('')
+  const [lastUpdated, setLastUpdated] = useState()
   let available = true
 
   const onSubmit = (e) => {
     e.preventDefault()
 
+    if (!make) {
+      alert('Please enter the make of the vehicle.')
+      return
+    }
+
     if (!model) {
-      alert ('Please enter the make and model of the vehicle.')
+      alert('Please enter the model of the vehicle.')
       return
     }
 
-    if (!range) {
-      alert ('Please enter the vehicle\'s range.')
+    if (!distanceDriven) {
+      alert('Please enter the vehicle\'s range.')
       return
     }
 
-    if (!yearPurchased) {
-      alert ('Please enter the year the vehicle was purchased.')
+    if (!yearManufactured) {
+      alert('Please enter the year the vehicle was manufactured.')
       return
     }
 
-    onAdd({ model, range, yearPurchased, available })
+    setLastUpdated(new Date())
+    onAdd({ make, model, distanceDriven, yearManufactured, available, lastUpdated })
 
+    // Reset the form
+    setMake('')
     setModel('')
-    setRange('')
-    setYearPurchased('')
+    setDistanceDriven('')
+    setYearManufactured('')
   }
 
   return (
-    <form className="add-form" onSubmit = {onSubmit}>
+    <form className="add-form" onSubmit={onSubmit}>
+      <div className='make-and-model-form-control'>
         <div className="form-control">
-            <label>Make and Model</label>
-            <input type='text' placeholder='e.g. "Tesla Model Y"' value={model} 
+          <label>Make</label>
+          <input type='text' placeholder='e.g. "Tesla"' value={make}
+            onChange={(e) => setMake(e.target.value)} />
+        </div>
+        <div className="form-control">
+          <label>Model</label>
+          <input type='text' placeholder='e.g. "Model S"' value={model}
             onChange={(e) => setModel(e.target.value)} />
         </div>
-        <div className="form-control">
-            <label>Range</label>
-            <input type='text' placeholder='e.g. "300km"' value={range} 
-            onChange={(e) => setRange(e.target.value)} />
-        </div>
-        <div className="form-control">
-            <label>Year Purchased</label>
-            <input type='text' placeholder='e.g. "2022"' value={yearPurchased} 
-            onChange={(e) => setYearPurchased(e.target.value)} />
-        </div>
+      </div>
+      <div className="form-control">
+        <label>Distance Driven</label>
+        <input type='text' placeholder='e.g. "100,000 km"' value={distanceDriven}
+          onChange={(e) => setDistanceDriven(e.target.value)} />
+      </div>
+      <div className="form-control">
+        <label>Year Manufactured</label>
+        <input type='text' placeholder='e.g. "2022"' value={yearManufactured}
+          onChange={(e) => setYearManufactured(e.target.value)} />
+      </div>
 
-        <input type='submit' value='Add Vehicle' className="btn btn-block"/>
+      <input type='submit' value='Add Vehicle' className="btn btn-block" />
     </form>
   )
 }

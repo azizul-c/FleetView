@@ -4,11 +4,13 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Vehicles from "./components/Vehicles";
 import AddVehicle from "./components/AddVehicle";
+import EditVehicle from "./components/EditVehicle";
 import About from "./components/About";
 
 function App() {
   const [showAddVehicle, setShowAddVehicle] = useState(false);
   const [vehicles, setVehicles] = useState([]);
+  const [vehicleBeingEdited, setVehicleBeingEdited] = useState();
 
   useEffect(() => {
     const getVehicles = async () => {
@@ -38,8 +40,6 @@ function App() {
   // Add Vehicle
   const addVehicle = async (vehicle) => {
     console.log(vehicle);
-    console.log(JSON.stringify(vehicle));
-
     const res = await fetch(`http://localhost:5000/vehicles`, {
       method: "POST",
       headers: {
@@ -58,6 +58,11 @@ function App() {
     // setVehicles([...vehicles, newVehicle])
   };
 
+  // Edit Vehicle
+  const editVehicle = async (vehicle) => {
+    setVehicleBeingEdited(vehicle);
+  };
+
   // Delete Vehicle
   const deleteVehicle = async (id) => {
     await fetch(`http://localhost:5000/vehicles/${id}`, {
@@ -67,29 +72,29 @@ function App() {
   };
 
   // Toggle Availability
-  const toggleAvailability = async (id) => {
-    const vehicleToToggle = await fetchVehicle(id);
-    const updatedVehicle = {
-      ...vehicleToToggle,
-      available: !vehicleToToggle.available,
-    };
+  // const toggleAvailability = async (id) => {
+  //   const vehicleToToggle = await fetchVehicle(id);
+  //   const updatedVehicle = {
+  //     ...vehicleToToggle,
+  //     available: !vehicleToToggle.available,
+  //   };
 
-    const res = await fetch(`http://localhost:5000/vehicles/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(updatedVehicle),
-    });
+  //   const res = await fetch(`http://localhost:5000/vehicles/${id}`, {
+  //     method: "PUT",
+  //     headers: {
+  //       "Content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(updatedVehicle),
+  //   });
 
-    const data = await res.json();
+  //   const data = await res.json();
 
-    setVehicles(
-      vehicles.map((vehicle) =>
-        vehicle.id === id ? { ...vehicle, available: data.available } : vehicle
-      )
-    );
-  };
+  //   setVehicles(
+  //     vehicles.map((vehicle) =>
+  //       vehicle.id === id ? { ...vehicle, available: data.available } : vehicle
+  //     )
+  //   );
+  // };
 
   return (
     <Router>
@@ -107,11 +112,14 @@ function App() {
                 {/* shorter way of doing a ternary without an else */}
                 {showAddVehicle && <AddVehicle onAdd={addVehicle} />}
                 {vehicles.length > 0 ? (
-                  <Vehicles
-                    vehicles={vehicles}
-                    onDelete={deleteVehicle}
-                    onToggle={toggleAvailability}
-                  />
+                  <>
+                    <h2>Your fleet</h2>
+                    <Vehicles
+                      vehicles={vehicles}
+                      onDelete={deleteVehicle}
+                      onEdit={editVehicle}
+                    />
+                  </>
                 ) : (
                   "There are no vehicles in your fleet."
                 )}
@@ -119,6 +127,10 @@ function App() {
             }
           />
           <Route path="/about" element={<About />} />
+          <Route
+            path="/edit-vehicle/:vehicleId"
+            element={<EditVehicle vehicle={vehicleBeingEdited} />}
+          ></Route>
         </Routes>
         <Footer />
       </div>
