@@ -1,9 +1,7 @@
-import { FaTimes } from 'react-icons/fa'
-import { MdEdit } from 'react-icons/md'
 import { IoIosArrowRoundForward } from 'react-icons/io'
 import { Link } from "react-router-dom"
 
-const Vehicle = ({ vehicle, onDelete, onEdit }) => {
+const Vehicle = ({ vehicle, onView }) => {
   return (
     <div className='vehicle'>
       <div className='vehicle-make-logo-container'>
@@ -15,11 +13,10 @@ const Vehicle = ({ vehicle, onDelete, onEdit }) => {
             <h3 className='make-and-model'>{vehicle.make} {vehicle.model} </h3>
             <h3 className='vehicle-year'>{vehicle.yearManufactured}</h3>
           </div>
-          <Link to={`/edit-vehicle/${vehicle.id}`}><IoIosArrowRoundForward onClick={() => onEdit(vehicle)} /></Link>
+          <Link to={`/view-vehicle/${vehicle.id}`}><IoIosArrowRoundForward onClick={() => onView(vehicle)} /></Link>
         </div>
         <p>License Plate: {vehicle.licensePlate}</p>
         <p className="bold">{vehicle.available ? "Available" : "Unavailable"}</p>
-        {/* <FaTimes style={{ color: 'red', cursor: 'pointer' }} onClick={() => onDelete(vehicle.id)} /> */}
       </div>
     </div>
   )

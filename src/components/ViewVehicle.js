@@ -7,8 +7,7 @@ import { TbBulb } from 'react-icons/tb'
 import { Link, useNavigate } from "react-router-dom"
 import Recall from './Recall'
 
-const EditVehicle = ({ vehicle, onDelete, onToggle }) => {
-    const [editVehicle, setEditVehicle] = useState(false);
+const ViewVehicle = ({ vehicle, onDelete, onToggle }) => {
     const [isDataLoading, setIsDataLoading] = useState(true);
     const [recalls, setRecalls] = useState();
     const [isVehicleAvailable, setIsVehicleAvailable] = useState(vehicle.available);
@@ -27,8 +26,6 @@ const EditVehicle = ({ vehicle, onDelete, onToggle }) => {
         fetchData();
     }, [vehicle]);
 
-    useEffect(() => { console.log(isVehicleAvailable) }, [isVehicleAvailable]);
-
     const getRecallInformation = async (vehicle) => {
         const response = await fetch(`https://api.nhtsa.gov/recalls/recallsByVehicle?make=${vehicle.make}&model=${vehicle.model}&modelYear=${vehicle.yearManufactured}`);
         const data = await response.json();
@@ -46,15 +43,13 @@ const EditVehicle = ({ vehicle, onDelete, onToggle }) => {
             navigate('/');
         } catch (error) {
             console.error('Error deleting car:', error);
-            // Handle errors if needed
         }
     };
 
     return (
         <>
             <header className='view-vehicle-header'>
-                <h2>{editVehicle ? "Edit vehicle" : "View vehicle"}</h2>
-                {/* <button className='save-button btn'><MdCheck /> Save changes</button> */}
+                <h2>View vehicle</h2>
                 <Link to="/"><button className='go-back btn'><IoIosArrowRoundBack /> Return to fleet</button></Link>
             </header>
             <div className='view-vehicle_vehicle-info'>
@@ -125,4 +120,4 @@ const EditVehicle = ({ vehicle, onDelete, onToggle }) => {
     )
 }
 
-export default EditVehicle
+export default ViewVehicle

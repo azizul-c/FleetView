@@ -1,16 +1,14 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
 import Vehicles from "./components/Vehicles";
 import AddVehicle from "./components/AddVehicle";
-import EditVehicle from "./components/EditVehicle";
+import ViewVehicle from "./components/ViewVehicle";
 import About from "./components/About";
 
 function App() {
-  const [showAddVehicle, setShowAddVehicle] = useState(true);
   const [vehicles, setVehicles] = useState([]);
-  const [vehicleBeingEdited, setVehicleBeingEdited] = useState();
+  const [vehicleBeingViewed, setVehicleBeingViewed] = useState();
 
   useEffect(() => {
     const getVehicles = async () => {
@@ -20,8 +18,6 @@ function App() {
 
     getVehicles();
   }, []);
-
-  // useEffect(() => {}, [vehicleBeingEdited]);
 
   // Fetch Vehicles from Mock Backend
   const fetchVehicles = async () => {
@@ -41,7 +37,6 @@ function App() {
 
   // Add Vehicle
   const addVehicle = async (vehicle) => {
-    console.log(vehicle);
     const res = await fetch(`http://localhost:5000/vehicles`, {
       method: "POST",
       headers: {
@@ -51,7 +46,6 @@ function App() {
     });
 
     const data = await res.json();
-    console.log(data);
     setVehicles([...vehicles, data]);
 
     // The following code is used when *not* using JSON-server as the backend
@@ -61,8 +55,8 @@ function App() {
   };
 
   // Edit Vehicle
-  const editVehicle = async (vehicle) => {
-    setVehicleBeingEdited(vehicle);
+  const viewVehicle = async (vehicle) => {
+    setVehicleBeingViewed(vehicle);
   };
 
   // Delete Vehicle
@@ -101,45 +95,42 @@ function App() {
   return (
     <Router>
       <div className="container">
-        <Header
-          title={"FleetView"}
-          onAdd={() => setShowAddVehicle(!showAddVehicle)}
-          showAdd={showAddVehicle}
-        />
+        <Header title={"FleetView"} />
         <Routes>
           <Route
             path="/"
             element={
               <>
-                {showAddVehicle && <AddVehicle onAdd={addVehicle} />}
+                <AddVehicle onAdd={addVehicle} />
                 <h2>Your fleet</h2>
                 {vehicles.length > 0 ? (
                   <>
                     <Vehicles
                       vehicles={vehicles}
                       onDelete={deleteVehicle}
-                      onEdit={editVehicle}
+                      onView={viewVehicle}
                     />
                   </>
                 ) : (
-                  "There are no vehicles in your fleet."
+                  <p className="no-vehicles-warn">
+                    There are no vehicles in your fleet.
+                  </p>
                 )}
               </>
             }
           />
           <Route path="/about" element={<About />} />
           <Route
-            path="/edit-vehicle/:vehicleId"
+            path="/view-vehicle/:vehicleId"
             element={
-              <EditVehicle
-                vehicle={vehicleBeingEdited}
+              <ViewVehicle
+                vehicle={vehicleBeingViewed}
                 onDelete={deleteVehicle}
                 onToggle={toggleAvailability}
               />
             }
           ></Route>
         </Routes>
-        {/* <Footer /> */}
       </div>
     </Router>
   );
