@@ -4,11 +4,13 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Vehicles from "./components/Vehicles";
 import AddVehicle from "./components/AddVehicle";
+import EditVehicle from "./components/EditVehicle";
 import About from "./components/About";
 
 function App() {
-  const [showAddVehicle, setShowAddVehicle] = useState(false);
+  const [showAddVehicle, setShowAddVehicle] = useState(true);
   const [vehicles, setVehicles] = useState([]);
+  const [vehicleBeingEdited, setVehicleBeingEdited] = useState();
 
   useEffect(() => {
     const getVehicles = async () => {
@@ -18,6 +20,8 @@ function App() {
 
     getVehicles();
   }, []);
+
+  // useEffect(() => {}, [vehicleBeingEdited]);
 
   // Fetch Vehicles from Mock Backend
   const fetchVehicles = async () => {
@@ -38,8 +42,6 @@ function App() {
   // Add Vehicle
   const addVehicle = async (vehicle) => {
     console.log(vehicle);
-    console.log(JSON.stringify(vehicle));
-
     const res = await fetch(`http://localhost:5000/vehicles`, {
       method: "POST",
       headers: {
@@ -56,6 +58,11 @@ function App() {
     // const id = Math.floor(Math.random() * 10000) + 1
     // const newVehicle = { id, ...vehicle }
     // setVehicles([...vehicles, newVehicle])
+  };
+
+  // Edit Vehicle
+  const editVehicle = async (vehicle) => {
+    setVehicleBeingEdited(vehicle);
   };
 
   // Delete Vehicle
@@ -104,14 +111,16 @@ function App() {
             path="/"
             element={
               <>
-                {/* shorter way of doing a ternary without an else */}
                 {showAddVehicle && <AddVehicle onAdd={addVehicle} />}
+                <h2>Your fleet</h2>
                 {vehicles.length > 0 ? (
-                  <Vehicles
-                    vehicles={vehicles}
-                    onDelete={deleteVehicle}
-                    onToggle={toggleAvailability}
-                  />
+                  <>
+                    <Vehicles
+                      vehicles={vehicles}
+                      onDelete={deleteVehicle}
+                      onEdit={editVehicle}
+                    />
+                  </>
                 ) : (
                   "There are no vehicles in your fleet."
                 )}
@@ -119,8 +128,18 @@ function App() {
             }
           />
           <Route path="/about" element={<About />} />
+          <Route
+            path="/edit-vehicle/:vehicleId"
+            element={
+              <EditVehicle
+                vehicle={vehicleBeingEdited}
+                onDelete={deleteVehicle}
+                onToggle={toggleAvailability}
+              />
+            }
+          ></Route>
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </Router>
   );

@@ -1,24 +1,30 @@
 {
   "vehicles": [
     {
-      "model": "Tesla Model S",
-      "range": "200km",
-      "yearPurchased": "2021",
-      "available": false,
+      "make": "Tesla",
+      "model": "Model S",
+      "distanceDriven": "25151 km",
+      "licensePlate": "XYZA 214",
+      "yearManufactured": "2022",
+      "available": true,
       "id": 1
     },
     {
-      "model": "Polestar 2",
-      "range": "300km",
-      "yearPurchased": "2022",
-      "available": false,
+      "make": "Toyota",
+      "model": "RAV4",
+      "distanceDriven": "180000 km",
+      "licensePlate": "CYAT 213",
+      "yearManufactured": "2011",
+      "available": true,
       "id": 2
     },
     {
-      "model": "Mercedes-Benz EQS",
-      "range": "200km",
-      "yearPurchased": "2021",
-      "available": true,
+      "make": "Polestar",
+      "model": "1",
+      "distanceDriven": "80000 km",
+      "licensePlate": "KTAT 214",
+      "yearManufactured": "2021",
+      "available": false,
       "id": 3
     }
   ]
