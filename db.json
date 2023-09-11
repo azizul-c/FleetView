@@ -2,60 +2,30 @@
   "vehicles": [
     {
       "make": "Tesla",
-      "model": "Model Y",
-      "distanceDriven": "209313 km",
-      "yearManufactured": "2021",
+      "model": "Model S",
+      "distanceDriven": "25151 km",
+      "licensePlate": "XYZA 214",
+      "yearManufactured": "2022",
       "available": false,
       "id": 1
     },
     {
       "make": "Toyota",
       "model": "RAV4",
-      "distanceDriven": "20531 km",
-      "yearManufactured": "2012",
+      "distanceDriven": "180000 km",
+      "licensePlate": "CYAT 213",
+      "yearManufactured": "2011",
       "available": true,
       "id": 2
     },
     {
       "make": "Polestar",
-      "model": "2",
-      "distanceDriven": "100 km",
-      "yearManufactured": "2023",
-      "available": true,
-      "id": 4
-    },
-    {
-      "make": "Acura",
-      "model": "RSX",
-      "distanceDriven": "200000 km",
-      "yearManufactured": "2005",
-      "available": true,
-      "id": 9
-    },
-    {
-      "make": "GMC",
-      "model": "Yukon",
-      "distanceDriven": "20151 km",
+      "model": "1",
+      "distanceDriven": "80000 km",
+      "licensePlate": "KTAT 214",
       "yearManufactured": "2021",
-      "available": true,
-      "id": 11
-    },
-    {
-      "make": "Lamborghini",
-      "model": "Murciellago",
-      "distanceDriven": "202131",
-      "yearManufactured": "2020",
-      "available": true,
-      "id": 12
-    },
-    {
-      "make": "BMW",
-      "model": "M3",
-      "distanceDriven": "20000",
-      "yearManufactured": "2021",
-      "available": true,
-      "lastUpdated": "2023-09-10T00:26:54.456Z",
-      "id": 14
+      "available": false,
+      "id": 3
     }
   ]
 }

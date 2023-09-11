@@ -21,6 +21,8 @@ function App() {
     getVehicles();
   }, []);
 
+  // useEffect(() => {}, [vehicleBeingEdited]);
+
   // Fetch Vehicles from Mock Backend
   const fetchVehicles = async () => {
     const response = await fetch("http://localhost:5000/vehicles");
@@ -72,29 +74,29 @@ function App() {
   };
 
   // Toggle Availability
-  // const toggleAvailability = async (id) => {
-  //   const vehicleToToggle = await fetchVehicle(id);
-  //   const updatedVehicle = {
-  //     ...vehicleToToggle,
-  //     available: !vehicleToToggle.available,
-  //   };
+  const toggleAvailability = async (id) => {
+    const vehicleToToggle = await fetchVehicle(id);
+    const updatedVehicle = {
+      ...vehicleToToggle,
+      available: !vehicleToToggle.available,
+    };
 
-  //   const res = await fetch(`http://localhost:5000/vehicles/${id}`, {
-  //     method: "PUT",
-  //     headers: {
-  //       "Content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(updatedVehicle),
-  //   });
+    const res = await fetch(`http://localhost:5000/vehicles/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(updatedVehicle),
+    });
 
-  //   const data = await res.json();
+    const data = await res.json();
 
-  //   setVehicles(
-  //     vehicles.map((vehicle) =>
-  //       vehicle.id === id ? { ...vehicle, available: data.available } : vehicle
-  //     )
-  //   );
-  // };
+    setVehicles(
+      vehicles.map((vehicle) =>
+        vehicle.id === id ? { ...vehicle, available: data.available } : vehicle
+      )
+    );
+  };
 
   return (
     <Router>
@@ -129,7 +131,13 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route
             path="/edit-vehicle/:vehicleId"
-            element={<EditVehicle vehicle={vehicleBeingEdited} />}
+            element={
+              <EditVehicle
+                vehicle={vehicleBeingEdited}
+                onDelete={deleteVehicle}
+                onToggle={toggleAvailability}
+              />
+            }
           ></Route>
         </Routes>
         <Footer />

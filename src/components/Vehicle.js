@@ -17,7 +17,7 @@ const Vehicle = ({ vehicle, onDelete, onEdit }) => {
           </div>
           <Link to={`/edit-vehicle/${vehicle.id}`}><IoIosArrowRoundForward onClick={() => onEdit(vehicle)} /></Link>
         </div>
-        <p>Distance Driven: {vehicle.distanceDriven}</p>
+        <p>License Plate: {vehicle.licensePlate}</p>
         <p className="bold">{vehicle.available ? "Available" : "Unavailable"}</p>
         {/* <FaTimes style={{ color: 'red', cursor: 'pointer' }} onClick={() => onDelete(vehicle.id)} /> */}
       </div>
