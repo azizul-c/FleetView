@@ -108,6 +108,10 @@ header svg {
   margin-left: 20px;
 }
 
+.no-vehicles-warn {
+  margin-top: 10px;
+}
+
 .vehicles-container {
   display: flex;
   flex-direction: row;

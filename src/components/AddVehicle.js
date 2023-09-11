@@ -82,8 +82,6 @@ const AddVehicle = ({ onAdd }) => {
               onChange={(e) => setDistanceDriven(e.target.value)} />
           </div>
         </div>
-
-
         <input type='submit' value='Add Vehicle' className="add-vehicle-btn btn" />
       </form>
     </div>
