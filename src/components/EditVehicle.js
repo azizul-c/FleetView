@@ -3,6 +3,7 @@ import { MdCheck, MdOutlineCarCrash, MdDelete } from 'react-icons/md'
 import { IoIosArrowRoundBack } from 'react-icons/io'
 import { PiPath, PiWarningCircle } from 'react-icons/pi'
 import { BsCardText } from 'react-icons/bs'
+import { TbBulb } from 'react-icons/tb'
 import { Link, useNavigate } from "react-router-dom"
 import Recall from './Recall'
 
@@ -96,6 +97,7 @@ const EditVehicle = ({ vehicle, onDelete, onToggle }) => {
                                 </div>
                             </div>
                         </div>
+                        <p className='status-tip'><TbBulb /> Tip: Toggle the Current Status of the vehicle by clicking on it.</p>
                     </div>
                     <div className='view-vehicle_info-section'>
                         <h4>Recall Information</h4>

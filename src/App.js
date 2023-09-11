@@ -8,7 +8,7 @@ import EditVehicle from "./components/EditVehicle";
 import About from "./components/About";
 
 function App() {
-  const [showAddVehicle, setShowAddVehicle] = useState(false);
+  const [showAddVehicle, setShowAddVehicle] = useState(true);
   const [vehicles, setVehicles] = useState([]);
   const [vehicleBeingEdited, setVehicleBeingEdited] = useState();
 
@@ -111,11 +111,10 @@ function App() {
             path="/"
             element={
               <>
-                {/* shorter way of doing a ternary without an else */}
                 {showAddVehicle && <AddVehicle onAdd={addVehicle} />}
+                <h2>Your fleet</h2>
                 {vehicles.length > 0 ? (
                   <>
-                    <h2>Your fleet</h2>
                     <Vehicles
                       vehicles={vehicles}
                       onDelete={deleteVehicle}
@@ -140,7 +139,7 @@ function App() {
             }
           ></Route>
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </Router>
   );

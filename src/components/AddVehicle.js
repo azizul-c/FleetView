@@ -47,40 +47,46 @@ const AddVehicle = ({ onAdd }) => {
   }
 
   return (
-    <form className="add-form" onSubmit={onSubmit}>
-      <div className='make-and-model-form-control'>
-        <div className="form-control">
-          <label>Make</label>
-          <input type='text' placeholder='e.g. "Tesla"' value={make}
-            onChange={(e) => setMake(e.target.value)} />
-        </div>
-        <div className="form-control">
-          <label>Model</label>
-          <input type='text' placeholder='e.g. "Model S"' value={model}
-            onChange={(e) => setModel(e.target.value)} />
-        </div>
-        <div className="form-control">
-          <label>Year Manufactured</label>
-          <input type='text' placeholder='e.g. "2022"' value={yearManufactured}
-            onChange={(e) => setYearManufactured(e.target.value)} />
-        </div>
+    <div className='desc-and-form'>
+      <div className='description'>
+        <h3>Your fleet's safety matters. </h3>
+        <h4>FleetView makes recall information accessible and hassle-free. Get started today.</h4>
       </div>
-      <div className='plate-and-distance-form-control'>
-        <div className="form-control">
-          <label>License Plate</label>
-          <input type='text' placeholder='e.g. "ETAC 212"' value={licensePlate}
-            onChange={(e) => setLicensePlate(e.target.value)} />
+      <form className="add-form" onSubmit={onSubmit}>
+        <div className='make-and-model-form-control'>
+          <div className="form-control">
+            <label>Make</label>
+            <input type='text' placeholder='e.g. "Tesla"' value={make}
+              onChange={(e) => setMake(e.target.value)} />
+          </div>
+          <div className="form-control">
+            <label>Model</label>
+            <input type='text' placeholder='e.g. "Model S"' value={model}
+              onChange={(e) => setModel(e.target.value)} />
+          </div>
+          <div className="form-control">
+            <label>Year Manufactured</label>
+            <input type='text' placeholder='e.g. "2022"' value={yearManufactured}
+              onChange={(e) => setYearManufactured(e.target.value)} />
+          </div>
         </div>
-        <div className="form-control">
-          <label>Distance Driven</label>
-          <input type='text' placeholder='e.g. "100,000 km"' value={distanceDriven}
-            onChange={(e) => setDistanceDriven(e.target.value)} />
+        <div className='plate-and-distance-form-control'>
+          <div className="form-control">
+            <label>License Plate</label>
+            <input type='text' placeholder='e.g. "ETAC 212"' value={licensePlate}
+              onChange={(e) => setLicensePlate(e.target.value)} />
+          </div>
+          <div className="form-control">
+            <label>Distance Driven</label>
+            <input type='text' placeholder='e.g. "100,000 km"' value={distanceDriven}
+              onChange={(e) => setDistanceDriven(e.target.value)} />
+          </div>
         </div>
-      </div>
 
 
-      <input type='submit' value='Add Vehicle' className="add-vehicle-btn btn" />
-    </form>
+        <input type='submit' value='Add Vehicle' className="add-vehicle-btn btn" />
+      </form>
+    </div>
   )
 }
 
