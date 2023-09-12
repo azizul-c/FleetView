@@ -50,7 +50,7 @@ const ViewVehicle = ({ vehicle, onDelete, onToggle }) => {
         <>
             <header className='view-vehicle-header'>
                 <h2>View vehicle</h2>
-                <Link to="/"><button className='go-back btn'><IoIosArrowRoundBack /> Return to fleet</button></Link>
+                <Link to="/"><button className='go-back'><IoIosArrowRoundBack /> Return to fleet</button></Link>
             </header>
             <div className='view-vehicle_vehicle-info'>
                 <div className='view-vehicle_vehicle-header'>
@@ -105,7 +105,7 @@ const ViewVehicle = ({ vehicle, onDelete, onToggle }) => {
                                     <Recall key={index} recall={recall} />
                                 ))}
                             </>
-                        ) : (recalls.Count == 0 ? (
+                        ) : (recalls.Count === 0 ? (
                             <p className='recalls-no-info'>There are no recalls for this vehicle at this time.</p>
                         ) : (
                             <p className='recalls-no-info'>Unable to retrieve recall information.</p>

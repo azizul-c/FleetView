@@ -37,6 +37,14 @@ function App() {
 
   // Add Vehicle
   const addVehicle = async (vehicle) => {
+    // Trim trailing/leading whitespace from each entry
+    Object.entries(vehicle).forEach(([key, value]) => {
+      if (key !== "available") {
+        vehicle[key] = value.trim();
+      }
+    });
+
+    console.log(vehicle);
     const res = await fetch(`http://localhost:5000/vehicles`, {
       method: "POST",
       headers: {
