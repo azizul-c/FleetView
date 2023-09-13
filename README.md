@@ -1,5 +1,6 @@
 # 🚗 FleetView
-![image](https://github.com/azizul-c/FleetView/assets/71241543/627ff8bc-9b96-4b32-b86a-3002f3b67379)
+![image](https://github.com/azizul-c/FleetView/assets/71241543/6e8ee8f9-21db-4a1d-aba7-5248e2929a93)
+
 
 FleetView helps vehicle owners and fleet managers stay on top of recalls affecting their vehicles.
 
@@ -12,17 +13,18 @@ FleetView helps vehicle owners and fleet managers stay on top of recalls affecti
 ### Desktop 
 
 #### Home Page
-![image](https://github.com/azizul-c/FleetView/assets/71241543/1681aa53-557e-4de2-a737-3e176e17756e)
+![image](https://github.com/azizul-c/FleetView/assets/71241543/3162c665-a9d4-4d79-8e65-28cf571ce608)
 
 #### View a Vehicle
-![image](https://github.com/azizul-c/FleetView/assets/71241543/6f929d2e-36f0-4669-b2de-8d2eaad9fa73)
+![image](https://github.com/azizul-c/FleetView/assets/71241543/6d376648-19bc-49f4-950b-3f0ef6b18f2a)
 
 #### About Page
-![image](https://github.com/azizul-c/FleetView/assets/71241543/f7449473-23fb-4864-a0eb-f8b6453d510c)
+![image](https://github.com/azizul-c/FleetView/assets/71241543/37cf289f-351a-490b-bb45-3d3aac626924)
 
 ### iPhone 12 Pro
-<img src="https://github.com/azizul-c/FleetView/assets/71241543/b947fb23-9f82-434b-a011-81f5113dd1e4" width="320px" />
-<img src="https://github.com/azizul-c/FleetView/assets/71241543/7d7513b7-38fd-42ce-9dc0-38f2396f4d36" width="320px" />
+
+<img src="https://github.com/azizul-c/FleetView/assets/71241543/e3cf46e5-0b4e-497f-9939-a1ab41dc6a83" width="320px" />
+<img src="https://github.com/azizul-c/FleetView/assets/71241543/5af6115c-1224-478f-95ed-79b3a721a9fe" width="320px" />
 
 ## 👀 Features
 - Vehicle addition and deletion
