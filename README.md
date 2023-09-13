@@ -1,7 +1,33 @@
-# FleetView
+# 🚗 FleetView
+![image](https://github.com/azizul-c/FleetView/assets/71241543/627ff8bc-9b96-4b32-b86a-3002f3b67379)
 
-FleetView helps fleet owners manage their inventory of vehicles.
-This project was built using a React front-end and a JSON Server mock back-end.
+FleetView helps vehicle owners and fleet managers easily keep track of recalls affecting their vehicles.
+
+## 📽️ Watch a short demo! (1m 40s)
+[Click here!](https://drive.google.com/file/d/1_OlJunzEjOtz6_HEssIdHmUPiAvA6ERL/view?usp=sharing)
+
+## 🖼️ Gallery
+
+### Desktop 
+
+#### Home Page
+![image](https://github.com/azizul-c/FleetView/assets/71241543/1681aa53-557e-4de2-a737-3e176e17756e)
+
+#### View a Vehicle
+![image](https://github.com/azizul-c/FleetView/assets/71241543/6f929d2e-36f0-4669-b2de-8d2eaad9fa73)
+
+#### About Page
+![image](https://github.com/azizul-c/FleetView/assets/71241543/f7449473-23fb-4864-a0eb-f8b6453d510c)
+
+### iPhone 12 Pro
+<img src="https://github.com/azizul-c/FleetView/assets/71241543/b947fb23-9f82-434b-a011-81f5113dd1e4" width="320px" />
+<img src="https://github.com/azizul-c/FleetView/assets/71241543/7d7513b7-38fd-42ce-9dc0-38f2396f4d36" width="320px" />
+<img src="https://github.com/azizul-c/FleetView/assets/71241543/ebe07e28-2724-43c8-9edd-9ca7be0340f0" width="320px" />
+
+
+
+
+
 
 ## Available Scripts
 
