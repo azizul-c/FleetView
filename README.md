@@ -1,7 +1,4 @@
 # 🚗 FleetView
-![image](https://github.com/azizul-c/FleetView/assets/71241543/6e8ee8f9-21db-4a1d-aba7-5248e2929a93)
-
-
 FleetView helps vehicle owners and fleet managers stay on top of recalls affecting their vehicles.
 
 ## 📽️ Watch a short demo! (1m 40s)
