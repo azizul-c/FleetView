@@ -3,9 +3,10 @@ from flask import Flask, request, jsonify
 from pinecone import Pinecone
 from pinecone_plugins.assistant.models.chat import Message
 from dotenv import load_dotenv
+from flask_cors import CORS
 
 app = Flask(__name__)
-
+CORS(app, origins=["http://localhost:3000", "https://fleetview.vercel.app/"])
 
 load_dotenv()
 
