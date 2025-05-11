@@ -113,7 +113,7 @@ function AppContent() {
       console.error("Error adding vehicle:", error.message);
       return;
     }
-    setVehicles([data[0], ...vehicles]);
+    setVehicles([snakeToCamel(data[0]), ...vehicles]);
   };
 
   // Edit Vehicle (just sets the state for viewing)
