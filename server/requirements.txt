@@ -1,0 +1,4 @@
+flask
+pinecone
+pinecone-plugin-assistant
+python-dotenv
