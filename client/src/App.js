@@ -13,6 +13,7 @@ import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import { supabase } from "./lib/supabase";
 import { GoogleLogin } from '@react-oauth/google';
 import Footer from "./components/Footer";
+import ChatWidget from "./components/ChatWidget";
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -259,6 +260,7 @@ function AppContent() {
         </Routes>
       </div>
       <Footer />
+      <ChatWidget user={user} />
     </Router>
   );
 }
