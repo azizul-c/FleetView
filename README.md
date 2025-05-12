@@ -1,46 +1,50 @@
-# FleetView
+# 🚗 FleetView
+FleetView helps auto owners and fleet managers stay on top of recalls affecting their vehicles.
 
-FleetView helps fleet owners manage their inventory of vehicles.
-This project was built using a React front-end and a JSON Server mock back-end.
+## ▶️ Try it out
+https://fleetview.vercel.app/ 
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm run server`
+## 🖼️ Gallery
 
-Runs the mock back-end server.
-Open [http://localhost:5000](http://localhost:5000) to view it in your browser.
+### Desktop 
 
-### `npm start`
+#### Home Page - User not logged in
+![image](https://github.com/user-attachments/assets/31441fa6-9a28-4b26-bd83-c3b942057a09)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### Home Page - User logged in
+![image](https://github.com/user-attachments/assets/3311dfb6-5fb0-4336-b655-2fe29152d92e)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### View a Vehicle
+![image](https://github.com/user-attachments/assets/9c9c51aa-b106-46a8-b39b-7346aa5fbebe)
+![image](https://github.com/user-attachments/assets/7b0b1003-5f0d-40f8-9a5d-2ce41f66a62a)
 
-### `npm run build`
+#### AI agent usage
+![image](https://github.com/user-attachments/assets/c5dad821-5fc6-417c-8f2f-0ce14552f640)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### About Page
+![image](https://github.com/user-attachments/assets/f73d782d-6d34-457f-9137-180e4eb06c31)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## 👀 Features
+- Separate user profiles via Google OAuth
+- Vehicle addition and deletion
+- Ability to toggle the availability of a vehicle
+- View recall information for a given vehicle
+- Logos for most vehicle makes
+- AI agent with RAG that can answer questions about vehicles by searching through vehicle manuals
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🧠 How it Works
+- Vehicle make logos are retrieved using the [Logo.dev API](https://logo.dev).
+- Vehicle recall information, based on a vehicle's make, model, and year, are retrieved from the [U.S. National Highway Traffic Safety Administration (NHTSA)'s Recalls API](https://www.nhtsa.gov/nhtsa-datasets-and-apis).
+- The AI agent uses Retrieval Augmented Generation (RAG) to return information relevant to the given vehicle by consulting the vehicle's manual. Since this is currently a hobby project, to manage token usage costs, the agent only has access to the vehicle manual for the 2011 Toyota RAV4. A sample question that can be asked is, "How do I stop my windshield from fogging up in my 2011 Toyota RAV4?"
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🛠️ Tech Stack
+- Front-end: React, React Router, Material UI, tons of CSS. Google OAuth. Deployed on Vercel.
+- Back-end: Python, Flask, Pinecone for the AI agent. Deployed on Render. 
+- Database: Supabase
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
