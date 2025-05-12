@@ -4,15 +4,47 @@ import { IoIosArrowRoundBack } from 'react-icons/io'
 import { PiPath, PiWarningCircle } from 'react-icons/pi'
 import { BsCardText } from 'react-icons/bs'
 import { TbBulb } from 'react-icons/tb'
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import Recall from './Recall'
+import { supabase } from '../lib/supabase';
+import { convertObjectKeys } from '../lib/utils';
 
-const ViewVehicle = ({ vehicle, onDelete, onToggle }) => {
+const ViewVehicle = ({ vehicle: propVehicle, onDelete, onToggle }) => {
+    const { vehicleId } = useParams();
+    const [vehicle, setVehicle] = useState(propVehicle);
     const [isDataLoading, setIsDataLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(!propVehicle);
     const [recalls, setRecalls] = useState();
-    const [isVehicleAvailable, setIsVehicleAvailable] = useState(vehicle.available);
+    const [isVehicleAvailable, setIsVehicleAvailable] = useState(propVehicle?.available);
 
     useEffect(() => {
+        // If no vehicle prop, fetch from Supabase
+        if (!propVehicle && vehicleId) {
+            (async () => {
+                const { data, error } = await supabase
+                    .from('vehicles')
+                    .select('*')
+                    .eq('id', vehicleId)
+                    .single();
+                if (error) {
+                    setVehicle(null);
+                } else {
+                    // Convert snake_case to camelCase
+                    const convertedData = convertObjectKeys(data);
+                    setVehicle(convertedData);
+                    setIsVehicleAvailable(convertedData.available);
+                }
+                setIsLoading(false);
+            })();
+        } else if (propVehicle) {
+            setVehicle(propVehicle);
+            setIsVehicleAvailable(propVehicle.available);
+            setIsLoading(false);
+        }
+    }, [propVehicle, vehicleId]);
+
+    useEffect(() => {
+        if (!vehicle) return;
         async function fetchData() {
             try {
                 const data = await getRecallInformation(vehicle);
@@ -41,6 +73,17 @@ const ViewVehicle = ({ vehicle, onDelete, onToggle }) => {
             console.error('Error deleting car:', error);
         }
     };
+
+    if (isLoading) {
+        return <div style={{ padding: 40 }}>Loading...</div>;
+    }
+
+    if (!vehicle) {
+        return <div style={{ padding: 40 }}>Vehicle not found.</div>;
+    }
+    if (!vehicle.make) {
+        return <div style={{ padding: 40 }}>Loading vehicle...</div>;
+    }
 
     return (
         <div className="view-vehicle-container">

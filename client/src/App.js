@@ -179,37 +179,41 @@ function AppContent() {
     <Router>
       {/* Show the landing hero background only on the unauthenticated landing page */}
       {!user && (
-        <div
-          className="landing-hero-bg"
-          style={{
-            background: `url('/fleet_image.jpg') center center/cover no-repeat`
-          }}
-        >
-          <div className="frosted-landing-content">
-            <div className='desc-and-form'>
-              <div className='description'>
-                <h3>Your fleet's safety matters.</h3>
-                <h4>FleetView makes recall information accessible and hassle-free. Get started today.</h4>
-              </div>
-              <div className="sign-in-container">
-                <div className="sign-in-content">
-                  <h3>Sign in to manage your fleet</h3>
-                  <p>Access your vehicle information and recall data</p>
-                  <div className="google-btn-wrapper">
-                    <GoogleLogin
-                      onSuccess={handleGoogleSuccess}
-                      onError={handleGoogleError}
-                      useOneTap
-                      width="320"
-                    />
+        <>
+          <div
+            className="landing-hero-bg"
+            style={{
+              background: `url('/fleet_image.jpg') center center/cover no-repeat`
+            }}
+          >
+            <div className="frosted-landing-content">
+              <div className='desc-and-form'>
+                <div className='description'>
+                  <h3>Your fleet's safety matters.</h3>
+                  <h4>FleetView makes recall information accessible and hassle-free. Get started today.</h4>
+                </div>
+                <div className="sign-in-container">
+                  <div className="sign-in-content">
+                    <h3>Sign in to manage your fleet</h3>
+                    <p>Access your vehicle information and recall data</p>
+                    <div className="google-btn-wrapper">
+                      <GoogleLogin
+                        onSuccess={handleGoogleSuccess}
+                        onError={handleGoogleError}
+                        useOneTap
+                        width="320"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+
+        </>
       )}
       <div className="container">
+
         <Header title={"FleetView"} user={user} onSignOut={signOut} />
         <Routes>
           <Route
@@ -240,7 +244,40 @@ function AppContent() {
                       </p>
                     )}
                   </>
-                ) : null}
+                ) :
+                  <div className="fleetview-landing-filler">
+                    <h2>A Smarter Way to Manage Your Fleet</h2>
+                    <div className="fleetview-features">
+                      <div className="fleetview-feature">
+                        <h3>Centralized Vehicle Management</h3>
+                        <p>
+                          Easily add and manage your vehicles in one secure platform. Maintain complete oversight and streamline your operations.
+                        </p>
+                      </div>
+                      <div className="fleetview-feature">
+                        <h3>Automated Recall Monitoring</h3>
+                        <p>
+                          Receive real-time updates on safety recalls specific to your vehicles. Act quickly and proactively to keep your fleet compliant.
+                        </p>
+                      </div>
+                      <div className="fleetview-feature">
+                        <h3>AI-Powered Manual Support</h3>
+                        <p>
+                          Access an intelligent assistant trained on your vehicle manuals. Get clear answers to technical questions without searching through documentation.
+                        </p>
+                      </div>
+                      <div className="fleetview-feature">
+                        <h3>Seamless Access Anywhere</h3>
+                        <p>
+                          Use FleetView from desktop or mobile to stay connected with your fleet wherever you are.
+                        </p>
+                      </div>
+                    </div>
+                    <button className="fleetview-get-started-btn" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                      Get started today
+                    </button>
+                  </div>
+                }
               </>
             }
           />

@@ -39,7 +39,7 @@ body {
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  padding-top: 80px;
+  /* padding-top: 80px; */
 }
 
 .header {
@@ -538,6 +538,7 @@ footer {
   width: 100%;
   max-width: 90%;
   margin: 0 auto;
+  margin-top: 80px;
 }
 
 .view-vehicle-header {
@@ -924,6 +925,29 @@ footer {
     margin-top: 10px;
     padding: 8px 20px;
   }
+
+  .header {
+    padding: 2px 3px !important;
+    border-radius: 10px !important;
+    margin-bottom: 3px !important;
+    min-height: 24px !important;
+  }
+  .header-logo-and-title h1,
+  .header h1 {
+    font-size: 11px !important;
+    margin-left: 2px !important;
+  }
+  .header p {
+    font-size: 7px !important;
+  }
+  .header-logo-and-title {
+    gap: 1px !important;
+  }
+  .header svg,
+  .header-logo-and-title svg {
+    width: 0.7em !important;
+    height: 0.7em !important;
+  }
 }
 
 @media (max-width: 440px) {
@@ -1023,6 +1047,29 @@ footer {
 
   .recall-body-item {
     margin-bottom: 10px;
+  }
+
+  .header {
+    padding: 1px 1px !important;
+    border-radius: 7px !important;
+    margin-bottom: 2px !important;
+    min-height: 18px !important;
+  }
+  .header-logo-and-title h1,
+  .header h1 {
+    font-size: 8px !important;
+    margin-left: 1px !important;
+  }
+  .header p {
+    font-size: 5.5px !important;
+  }
+  .header-logo-and-title {
+    gap: 0 !important;
+  }
+  .header svg,
+  .header-logo-and-title svg {
+    width: 0.5em !important;
+    height: 0.5em !important;
   }
 }
 
@@ -1224,32 +1271,92 @@ body {
 }
 
 @media (max-width: 600px) {
-  .frosted-landing-content {
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px 5px;
-    width: 98%;
-    max-width: 98vw;
-    background: rgba(30, 30, 30, 0.75);
-    min-height: unset;
+  footer,
+  footer > div,
+  footer > div > div {
+    width: 100vw !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
-  .sign-in-container {
-    background: rgba(255, 255, 255, 0.92);
-    padding: 20px 8px;
-    max-width: 100%;
+  /* Add horizontal padding to all footer content */
+  footer > div {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    width: 100vw !important;
   }
-  .frosted-landing-content h3 {
-    font-size: 20px;
+  /* Links and credits stacked, left-aligned with padding */
+  footer > div > div:first-child {
+    margin-top: 24px !important;
+    margin-bottom: 10px !important;
+    gap: 0 !important;
+    width: 100% !important;
+    align-items: flex-start !important;
   }
-  .frosted-landing-content h4,
-  .frosted-landing-content p {
-    font-size: 15px;
+  footer > div > div:first-child > div {
+    margin-bottom: 0 !important;
+    gap: 0 !important;
+    align-items: flex-start !important;
+    width: 100% !important;
   }
-  .sign-in-content h3 {
-    font-size: 18px;
+  /* Links */
+  footer a {
+    font-size: 17px !important;
+    text-align: left !important;
+    margin-bottom: 2px !important;
+    display: block !important;
+    font-weight: 500 !important;
   }
-  .sign-in-content p {
-    font-size: 13px;
+  /* Copyright and credits */
+  footer .MuiTypography-root {
+    font-size: 15px !important;
+    text-align: left !important;
+    margin-bottom: 2px !important;
+    display: block !important;
+    font-weight: 400 !important;
+  }
+  /* Horizontal line */
+  footer > div > div:nth-child(2) {
+    width: 100% !important;
+    margin: 16px 0 12px 0 !important;
+    border-bottom: 1px solid #bbb4 !important;
+    align-self: center !important;
+  }
+  /* Logo and title row at the bottom, centered and in a row */
+  .footer-logo-title-row {
+    width: 100vw !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    margin: 10px 0 0 0 !important;
+    padding-bottom: 18px !important;
+  }
+  .footer-logo-title-row img {
+    height: 2.1rem !important;
+    margin: 0 6px 0 0 !important;
+    vertical-align: middle !important;
+  }
+  .footer-logo-title-row .MuiTypography-root {
+    font-size: 1.45rem !important;
+    margin-left: 0 !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    vertical-align: middle !important;
+    color: #fff !important;
+    text-align: center !important;
+  }
+  .footer-logo-title-row svg,
+  .footer-logo-title-row .MuiSvgIcon-root {
+    font-size: 1.5rem !important;
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    vertical-align: middle !important;
   }
 }
 
@@ -1264,4 +1371,77 @@ body {
     transform: translateY(-8px);
     opacity: 0.7;
   }
+}
+
+.fleetview-landing-filler {
+  max-width: 1140px;
+  width: 80%;
+  margin: 0 auto;
+  padding: 24px 24px;
+  background: #fff;
+  border-radius: 32px;
+  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.04);
+  text-align: center;
+}
+
+.fleetview-landing-filler h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 28px;
+  color: #222;
+}
+
+.fleetview-features {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.fleetview-feature h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #2a2a2a;
+}
+
+.fleetview-feature p {
+  font-size: 1rem;
+  color: #444;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .fleetview-landing-filler {
+    width: 96%;
+    max-width: 96vw;
+    padding: 32px 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .fleetview-landing-filler {
+    width: 98%;
+    max-width: 98vw;
+    padding: 20px 5px;
+    border-radius: 18px;
+  }
+}
+
+.fleetview-get-started-btn {
+  margin-top: 32px;
+  padding: 14px 36px;
+  background: #166534;
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+.fleetview-get-started-btn:hover,
+.fleetview-get-started-btn:focus {
+  background: #14532d;
+  transform: translateY(-2px) scale(1.03);
 }

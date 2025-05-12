@@ -38,21 +38,68 @@ const Footer = () => (
                 <Typography sx={{ fontSize: 17, color: '#fff', fontFamily: 'Poppins, sans-serif', mb: 0.5 }}>
                     Created by Azizul Haque Chowdhury
                 </Typography>
-                <Typography sx={{ fontSize: 17, color: '#fff', fontFamily: 'Poppins, sans-serif' }}>
-                    Visit <a href="https://azizul.me" target="_blank" rel="noopener noreferrer" style={{ color: '#fff', textDecoration: 'underline' }}>azizul.me</a>
+                <Typography
+                    sx={{
+                        fontSize: 17,
+                        color: '#fff',
+                        fontFamily: 'Poppins, sans-serif',
+                        whiteSpace: 'nowrap',
+                        display: 'block',
+                    }}
+                >
+                    Visit <span style={{ color: '#fff', textDecoration: 'underline', fontSize: 'inherit', whiteSpace: 'nowrap' }}>
+                        <a
+                            href="https://azizul.me"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                                color: '#fff',
+                                textDecoration: 'underline',
+                                fontSize: 'inherit',
+                                whiteSpace: 'nowrap',
+                            }}
+                        >
+                            azizul.me
+                        </a>
+                    </span>
                 </Typography>
             </Box>
         </Box>
-        {/* More visible horizontal line */}
+        {/* Only one horizontal line */}
         <Box sx={{ width: '100%', borderBottom: '1px solid #bbb4', my: 3 }} />
-        {/* Logo and title below the line, right-aligned */}
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2, justifyContent: 'flex-end', width: '100%' }}>
+        {/* Logo and title below the line, always in a row, centered on mobile, no border */}
+        <Box
+            className="footer-logo-title-row"
+            sx={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 2,
+                mb: 2,
+                justifyContent: 'flex-end',
+                width: '100%',
+                borderBottom: 'none !important',
+            }}
+        >
             <img
                 src="/FleetView_logo.png"
                 alt="FleetView Logo"
-                style={{ height: '3.5rem', width: 'auto', filter: 'brightness(0) invert(1)' }}
+                style={{
+                    height: '3.5rem',
+                    width: 'auto',
+                    filter: 'brightness(0) invert(1)',
+                    borderBottom: 'none',
+                }}
             />
-            <Typography sx={{ fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#fff', fontSize: '2rem', ml: 1 }}>
+            <Typography
+                sx={{
+                    fontWeight: 700,
+                    fontFamily: 'Poppins, sans-serif',
+                    color: '#fff',
+                    fontSize: '2rem',
+                    ml: 1,
+                    borderBottom: 'none',
+                }}
+            >
                 FleetView
             </Typography>
         </Box>

@@ -6,7 +6,7 @@ const API_URL = 'https://fleetview-backend.onrender.com/api/assistant/chat';
 const ChatWidget = ({ user }) => {
     const [open, setOpen] = useState(false);
     const [messages, setMessages] = useState([
-        { sender: 'ai', text: 'Hi! I am your FleetView AI assistant. Ask me anything about your vehicles.' }
+        { sender: 'ai', text: 'Hi! I am your FleetView AI assistant. Ask me anything about your vehicles, but please know that I am still a work-in-progress! I am able to search for information from vehicle manuals -- I currently have access to the 2011 Toyota RAV4 manual.' }
     ]);
     const [input, setInput] = useState('');
     const [loading, setLoading] = useState(false);
