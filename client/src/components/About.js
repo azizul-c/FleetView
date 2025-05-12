@@ -1,6 +1,6 @@
-const About = () => {
+const About = ({ user }) => {
   return (
-    <div className="about-page">
+    <div className={`about-page${user ? ' about-page-user-logged-in' : ''}`}>
       <h2>About</h2>
       <p>FleetView helps auto owners and fleet managers view recall information about their vehicles. It obtains this information from the National Highway Traffic Safety Administration (NHTSA). For more information, visit <a href="https://www.nhtsa.gov/" target="_blank" rel="noopener noreferrer">https://www.nhtsa.gov/</a></p>
       <p>Created by Azizul Haque Chowdhury. Visit <a href="https://azizul.me" target="_blank" rel="noopener noreferrer">azizul.me</a></p>

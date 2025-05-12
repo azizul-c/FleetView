@@ -281,7 +281,7 @@ function AppContent() {
               </>
             }
           />
-          <Route path="/about" element={<About />} />
+          <Route path="/about" element={<About user={user} />} />
           <Route
             path="/view-vehicle/:vehicleId"
             element={

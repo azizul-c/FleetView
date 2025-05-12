@@ -638,6 +638,10 @@ footer {
   text-decoration: underline;
 }
 
+.about-page-user-logged-in {
+  margin-top: 80px !important;
+}
+
 @media (max-width: 1200px) {
   .container {
     max-width: 95%;

@@ -41,8 +41,15 @@ export const AuthProvider = ({ children }) => {
 
     const signOut = async () => {
         try {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (!session) {
+                setUser(null);
+                console.warn('No session found, user state cleared.');
+                return;
+            }
             const { error } = await supabase.auth.signOut();
             if (error) throw error;
+            setUser(null);
         } catch (error) {
             console.error('Error signing out:', error.message);
             throw error;
