@@ -3,6 +3,41 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 
 const API_URL = 'https://fleetview-backend.onrender.com/api/assistant/chat';
 
+// Format message text: \n as <br />, **word** as <b>word</b>
+function formatMessage(text) {
+    const parts = [];
+    let lastIndex = 0;
+    const boldRegex = /\*\*(.+?)\*\*/g;
+    let match;
+    while ((match = boldRegex.exec(text)) !== null) {
+        // Push text before bold
+        if (match.index > lastIndex) {
+            parts.push(text.slice(lastIndex, match.index));
+        }
+        // Push bold text
+        parts.push(<b key={match.index}>{match[1]}</b>);
+        lastIndex = match.index + match[0].length;
+    }
+    // Push remaining text
+    if (lastIndex < text.length) {
+        parts.push(text.slice(lastIndex));
+    }
+    // Now, split by \n and interleave <br />
+    const final = [];
+    parts.forEach((part, i) => {
+        if (typeof part === 'string') {
+            const lines = part.split(/\n/);
+            lines.forEach((line, j) => {
+                if (line) final.push(line);
+                if (j < lines.length - 1) final.push(<br key={`br-${i}-${j}`} />);
+            });
+        } else {
+            final.push(part);
+        }
+    });
+    return final;
+}
+
 const ChatWidget = ({ user }) => {
     const [open, setOpen] = useState(false);
     const [messages, setMessages] = useState([
@@ -117,7 +152,7 @@ const ChatWidget = ({ user }) => {
                                     maxWidth: '80%',
                                     fontSize: 15,
                                     wordBreak: 'break-word',
-                                }}>{msg.text}</span>
+                                }}>{formatMessage(msg.text)}</span>
                             </div>
                         ))}
                         {/* Typing indicator */}
