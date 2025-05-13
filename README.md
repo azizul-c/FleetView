@@ -44,7 +44,7 @@ https://fleetview.vercel.app/
 - The AI agent uses Retrieval Augmented Generation (RAG) to return information relevant to the given vehicle by consulting the vehicle's manual. Since this is currently a hobby project, to manage token usage costs, the agent only has access to the vehicle manual for the 2011 Toyota RAV4. A sample question that can be asked is, "How do I stop my windshield from fogging up in my 2011 Toyota RAV4?"
 
 ## 🛠️ Tech Stack
-- Front-end: React, React Router, Material UI, tons of CSS. Google OAuth. Deployed on Vercel.
+- Front-end: React, React Router, Material UI, tons of CSS, Google OAuth. Deployed on Vercel.
 - Back-end: Python, Flask, Pinecone for the AI agent. Deployed on Render. 
 - Database: Supabase
 
