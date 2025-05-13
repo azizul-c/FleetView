@@ -43,6 +43,10 @@ https://fleetview.vercel.app/
 - Vehicle recall information, based on a vehicle's make, model, and year, are retrieved from the [U.S. National Highway Traffic Safety Administration (NHTSA)'s Recalls API](https://www.nhtsa.gov/nhtsa-datasets-and-apis).
 - The AI agent uses Retrieval Augmented Generation (RAG) to return information relevant to the given vehicle by consulting the vehicle's manual. Since this is currently a hobby project, to manage token usage costs, the agent only has access to the vehicle manual for the 2011 Toyota RAV4. A sample question that can be asked is, "How do I stop my windshield from fogging up in my 2011 Toyota RAV4?"
 
+## ⚠️ Known Issues
+- The AI agent might take some time to respond to the very first query. This is because I'm using the free tier for Render, so the API endpoint for the agent stops working after periods of inactivity, and it takes a few seconds to start back up.
+- The AI agent currently doesn't have access to data pertaining to the user's fleet -- this is a feature I'm still working on. Since the agent has access to the 2011 Toyota RAV4's vehicle manual though, it can answer any question about that specific vehicle model. 
+
 ## 🛠️ Tech Stack
 - Front-end: React, React Router, Material UI, tons of CSS, Google OAuth. Deployed on Vercel.
 - Back-end: Python, Flask, Pinecone for the AI agent. Deployed on Render. 
